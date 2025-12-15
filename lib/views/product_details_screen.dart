@@ -60,6 +60,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         title: product?.name ?? 'Loading...',
                         rating: '5.0',
                         reviewCount: '120 reviews',
+                        productId: product?.id,
                       ),
                       const SizedBox(height: 20),
                       const ProductDescription(

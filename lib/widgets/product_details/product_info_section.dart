@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import '../../widgets/wishlist_icon.dart';
 
 class ProductInfoSection extends StatefulWidget {
   final String title;
   final String rating;
   final String reviewCount;
+  final int? productId;
 
   const ProductInfoSection({
     super.key,
     required this.title,
     required this.rating,
     required this.reviewCount,
+    this.productId,
   });
 
   @override
@@ -28,12 +31,25 @@ class _ProductInfoSectionState extends State<ProductInfoSection> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Text(
-                widget.title,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.title,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if (widget.productId != null) ...[
+                    const SizedBox(width: 10),
+                    WishlistIcon(
+                      productId: widget.productId!,
+                      size: 28,
+                    ),
+                  ],
+                ],
               ),
             ),
             Row(

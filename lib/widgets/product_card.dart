@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../views/product_details_screen.dart';
+import 'wishlist_icon.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -40,12 +41,22 @@ class ProductCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Text(
-          product.name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                product.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            WishlistIcon(
+              productId: product.id,
+              size: 20,
+            ),
+          ],
         ),
         const SizedBox(height: 5),
         Row(
